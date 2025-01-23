@@ -1,0 +1,14 @@
+# HLEB2 framework plugin for Visual Studio Code
+
+Extension for PHP framework HLEB2
+
+## Requirements
+
+To use the plugin, you must install the [HLEB2 framework](https://github.com/phphleb/hleb).
+
+### 0.0.1
+
+Initial release of HLEB2 plugin.
++ Hint to the route prefix.
++ Hint to the route address.
+
