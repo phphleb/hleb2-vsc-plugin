@@ -51,7 +51,7 @@ export function registerDebugInfoProvider(context: vscode.ExtensionContext) {
         }
     }, null, context.subscriptions)
 
-    const hoverProvider = vscode.languages.registerHoverProvider('*', {
+    const hoverProvider = vscode.languages.registerHoverProvider({ scheme: 'file', language: 'php' }, {
         provideHover(document, position) {
             const entireText = document.getText();
             let match: RegExpExecArray | null;
