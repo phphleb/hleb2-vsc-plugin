@@ -4,7 +4,7 @@ import path from "path";
 let directoryPaths: string[] = [];
 let filePaths: string[] = [];
 let lastCacheTime: number = 0;
-const cacheDuration: number = 30000; // 30 секунд в миллисекундах
+const cacheDuration: number = 10000; // 10 секунд в миллисекундах
 
 /**
  * Возвращает список файлов проекта.
@@ -34,6 +34,41 @@ export function directories(dirPath: string) {
     }
 
     return directoryPaths;
+}
+
+/**
+ * Преобразует список папок или файлов в именованный массив [tag => value].
+ */
+export function createTagNamedArray(paths: string[]): Record<string, string> {
+    const uniqueNames: Record<string, string> = {};
+    const seenPaths = new Set();
+
+    const replacements = {
+        '@storage': 'storage',
+        '@views': 'resources/views',
+        '@app': 'app',
+        '@resources': 'resources'
+    };
+
+    paths.forEach((p: string) => {
+        p = p.replace(/^[\\/]+/, '');
+
+        if (seenPaths.has(p)) return;
+        seenPaths.add(p);
+
+        for (const [key, value] of Object.entries(replacements)) {
+            if (p.startsWith(value)) {
+                let tag = key;
+                if (p !== value) {
+                    tag = key + p.substring(value.length);
+                }
+                uniqueNames[tag] = p;
+            }
+        }
+        uniqueNames['@/' + p] = p;
+    });
+
+    return uniqueNames;
 }
 
 function shouldUpdateCache(): boolean {
