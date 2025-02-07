@@ -1,28 +1,31 @@
 import * as vscode from 'vscode';
-import {files, directories} from "./projectPaths";
+import {files, directories, createTagNamedArray} from "./projectPaths";
 
-// Регулярное выражение для поиска строковых аргументов
+// Регулярное выражение для поиска строковых аргументов.
 const stringArgumentRegex = /(['"])(.*?)\1/g;
 
+/**
+ * Автодополнение для директорий и файловых путей при назначении аргумента с начальным @.
+ */
 export function registerGlobalPathProvider(context: vscode.ExtensionContext, root: string) {
 
-    const directoryPaths = directories(root);
-    const filePaths = files(root);
+    const directoryPaths = createTagNamedArray(directories(root));
+    const filePaths = createTagNamedArray(files(root));
 
     function addCompletionsFromPaths(position: vscode.Position, linePrefix: string): vscode.CompletionItem[] {
         const completions: vscode.CompletionItem[] = [];
         const startPosition = position.with(position.line, linePrefix.lastIndexOf('@'));
         const range = new vscode.Range(startPosition, position);
-        filePaths.forEach(file => {
-            const item = new vscode.CompletionItem(`@/${file}`, vscode.CompletionItemKind.File);
+        for (const [key, file] of Object.entries(filePaths)) {
+            const item = new vscode.CompletionItem(key, vscode.CompletionItemKind.File);
             item.range = range;
             completions.push(item);
-        });
-        directoryPaths.forEach(dir => {
-            const item = new vscode.CompletionItem(`@/${dir}`, vscode.CompletionItemKind.Folder);
+        }
+        for (const [key, dir] of Object.entries(directoryPaths)) {
+            const item = new vscode.CompletionItem(key, vscode.CompletionItemKind.Folder);
             item.range = range;
             completions.push(item);
-        });
+        }
 
         // Сортировка items по алфавитному порядку и по длине
         completions.sort((a, b) => {

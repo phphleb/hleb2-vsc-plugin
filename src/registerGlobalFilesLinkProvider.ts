@@ -5,7 +5,9 @@ import path from "path";
 // Регулярное выражение для поиска строковых аргументов
 const stringArgumentRegex = /(['"])(.*?)\1/g;
 
-// Создает специальные ссылки на файл, если такой файл существует.
+/**
+ * Создание специальной ссылки на файл, если такой файл существует.
+ */
 export function registerGlobalFilesLinkProvider(context: vscode.ExtensionContext, root: string) {
 
     const filePaths = createTagNamedArray(files(root));
@@ -21,7 +23,7 @@ export function registerGlobalFilesLinkProvider(context: vscode.ExtensionContext
                 const matchStart = document.positionAt(match.index);
                 const matchEnd = document.positionAt(match.index + match[0].length);
 
-                // Проверяем, совпадает ли текст с любым из путей файлов
+                // Проверка, совпадает ли текст с любым из путей файлов.
                 for (const [key, file] of Object.entries(filePaths)) {
                     if (matchedText === key) {
                         const linkRange = new vscode.Range(matchStart, matchEnd);
