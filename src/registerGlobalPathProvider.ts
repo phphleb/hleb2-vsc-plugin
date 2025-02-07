@@ -14,7 +14,7 @@ export function registerGlobalPathProvider(context: vscode.ExtensionContext, roo
         const startPosition = position.with(position.line, linePrefix.lastIndexOf('@'));
         const range = new vscode.Range(startPosition, position);
         filePaths.forEach(file => {
-            const item = new vscode.CompletionItem(`@/${file}`, vscode.CompletionItemKind.Folder);
+            const item = new vscode.CompletionItem(`@/${file}`, vscode.CompletionItemKind.File);
             item.range = range;
             completions.push(item);
         });
@@ -45,11 +45,6 @@ export function registerGlobalPathProvider(context: vscode.ExtensionContext, roo
             const lineText = document.lineAt(position).text;
             const linePrefix = lineText.substr(0, position.character);
 
-            if (!linePrefix.includes('@')) {
-                return undefined;
-            }
-
-            // Проверяем, если курсор находится в строковом аргументе
             const matches = lineText.match(stringArgumentRegex);
             if (matches) {
                 let isInsideString = false;
@@ -58,6 +53,9 @@ export function registerGlobalPathProvider(context: vscode.ExtensionContext, roo
                     const end = start + match.length;
                     if (position.character > start && position.character < end) {
                         isInsideString = true;
+                        if (match[1] !== '@') { // Проверка символа '@' после кавычки
+                            isInsideString = false;
+                        }
                     }
                 });
 
@@ -68,7 +66,7 @@ export function registerGlobalPathProvider(context: vscode.ExtensionContext, roo
 
             return addCompletionsFromPaths(position, linePrefix);
         }
-    }, '@');
+    }, '@', '/', '.');
 
     context.subscriptions.push(provider);
 }
