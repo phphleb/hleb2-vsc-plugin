@@ -2,18 +2,16 @@ import * as vscode from 'vscode';
 import { files, createTagNamedArray } from "./projectPaths";
 import path from "path";
 
-// Регулярное выражение для поиска строковых аргументов
+// Регулярное выражение для поиска строковых аргументов.
 const stringArgumentRegex = /(['"])(.*?)\1/g;
 
 /**
  * Создание специальной ссылки на файл, если такой файл существует.
  */
 export function registerGlobalFilesLinkProvider(context: vscode.ExtensionContext, root: string) {
-
-    const filePaths = createTagNamedArray(files(root));
-
     const provider = vscode.languages.registerDocumentLinkProvider('php', {
         provideDocumentLinks(document: vscode.TextDocument): vscode.ProviderResult<vscode.DocumentLink[]> {
+            const filePaths = createTagNamedArray(files(root));
             const links: vscode.DocumentLink[] = [];
             const text = document.getText();
 

@@ -10,14 +10,9 @@ const cacheDuration: number = 10000; // 10 секунд в миллисекун�
  * Возвращает список файлов проекта.
  */
 export function files(dirPath: string) {
-    if (!filePaths || shouldUpdateCache()) {
-        // Сброс кеша перед новым сбором путей
-        directoryPaths = [];
-        filePaths = [];
-        collectPaths(dirPath);
-        lastCacheTime = Date.now();
+    if (shouldUpdateCache()) {
+        updateCache(dirPath);
     }
-
     return filePaths;
 }
 
@@ -25,15 +20,17 @@ export function files(dirPath: string) {
  * Возвращает список директорий проекта.
  */
 export function directories(dirPath: string) {
-    if (!directoryPaths || shouldUpdateCache()) {
-        // Сброс кеша перед новым сбором путей
-        directoryPaths = [];
-        filePaths = [];
-        collectPaths(dirPath);
-        lastCacheTime = Date.now();
+    if (shouldUpdateCache()) {
+        updateCache(dirPath);
     }
-
     return directoryPaths;
+}
+
+function updateCache(dirPath: string) {
+    lastCacheTime = Date.now();
+    directoryPaths = [];
+    filePaths = [];
+    collectPaths(dirPath);
 }
 
 /**

@@ -8,11 +8,10 @@ const stringArgumentRegex = /(['"])(.*?)\1/g;
  * Автодополнение для директорий и файловых путей при назначении аргумента с начальным @.
  */
 export function registerGlobalPathProvider(context: vscode.ExtensionContext, root: string) {
-
-    const directoryPaths = createTagNamedArray(directories(root));
-    const filePaths = createTagNamedArray(files(root));
-
     function addCompletionsFromPaths(position: vscode.Position, linePrefix: string): vscode.CompletionItem[] {
+        const directoryPaths = createTagNamedArray(directories(root));
+        const filePaths = createTagNamedArray(files(root));
+
         const completions: vscode.CompletionItem[] = [];
         const startPosition = position.with(position.line, linePrefix.lastIndexOf('@'));
         const range = new vscode.Range(startPosition, position);
