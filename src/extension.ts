@@ -4,6 +4,7 @@ import * as path from 'path';
 import {registerRouteAddressProvider} from "./routeAddressProvider";
 import {registerRoutePrefixProvider} from "./routePrefixProvider";
 import {registerDebugInfoProvider} from "./registerDebugInfoProvider";
+import {registerGlobalPathProvider} from "./registerGlobalPathProvider";
 
 export function activate(context: vscode.ExtensionContext) {
 	console.log('The extension for the HLEB2 framework is activated.');
@@ -14,6 +15,7 @@ export function activate(context: vscode.ExtensionContext) {
 	if (root && fs.existsSync(path.join(root, 'app', 'Bootstrap', 'BaseContainer.php'))) {
 		registerRouteAddressProvider(context);
 		registerRoutePrefixProvider(context);
+		registerGlobalPathProvider(context, root);
 	}
 
 	registerDebugInfoProvider(context);
