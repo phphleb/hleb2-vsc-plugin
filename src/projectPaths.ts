@@ -53,7 +53,7 @@ function collectPaths(dirPath: string, relativePath: string = '') {
                 directoryPaths.push(relativeEntryPath);
                 // Рекурсивный вызов для вложенных директорий
                 collectPaths(fullPath, relativeEntryPath);
-            } else if (fullPath.endsWith('.php')) {
+            } else {
                 filePaths.push(relativeEntryPath);
             }
         });

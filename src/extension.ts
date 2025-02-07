@@ -5,6 +5,7 @@ import {registerRouteAddressProvider} from "./routeAddressProvider";
 import {registerRoutePrefixProvider} from "./routePrefixProvider";
 import {registerDebugInfoProvider} from "./registerDebugInfoProvider";
 import {registerGlobalDirectoryPathProvider} from "./registerGlobalDirectoryPathProvider";
+import {registerGlobalFilesLinkProvider} from "./registerGlobalFilesLinkProvider";
 
 export function activate(context: vscode.ExtensionContext) {
 	console.log('The extension for the HLEB2 framework is activated.');
@@ -16,6 +17,7 @@ export function activate(context: vscode.ExtensionContext) {
 		registerRouteAddressProvider(context);
 		registerRoutePrefixProvider(context);
 		registerGlobalDirectoryPathProvider(context, root);
+		registerGlobalFilesLinkProvider(context, root);
 	}
 
 	registerDebugInfoProvider(context);
