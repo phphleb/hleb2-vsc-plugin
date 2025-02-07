@@ -4,7 +4,7 @@ import * as path from 'path';
 import {registerRouteAddressProvider} from "./routeAddressProvider";
 import {registerRoutePrefixProvider} from "./routePrefixProvider";
 import {registerDebugInfoProvider} from "./registerDebugInfoProvider";
-import {registerGlobalDirectoryPathProvider} from "./registerGlobalDirectoryPathProvider";
+import {registerGlobalPathProvider} from "./registerGlobalPathProvider";
 import {registerGlobalFilesLinkProvider} from "./registerGlobalFilesLinkProvider";
 
 export function activate(context: vscode.ExtensionContext) {
@@ -16,7 +16,7 @@ export function activate(context: vscode.ExtensionContext) {
 	if (root && fs.existsSync(path.join(root, 'app', 'Bootstrap', 'BaseContainer.php'))) {
 		registerRouteAddressProvider(context);
 		registerRoutePrefixProvider(context);
-		registerGlobalDirectoryPathProvider(context, root);
+		registerGlobalPathProvider(context, root);
 		registerGlobalFilesLinkProvider(context, root);
 	}
 
