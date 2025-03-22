@@ -11,7 +11,7 @@ Made for Visual Studio Code >=1.96.0
 
 ## Installation
 
-1) To install, download the file from this repository /build/distributions/[hleb2-integration-0.0.1-dev.vsix](https://github.com/phphleb/hleb2-vcs-plugin/raw/refs/heads/main/build/distributions/hleb2-integration-0.0.1-dev.vsix)
+1) To install, download the file from this repository /build/distributions/[hleb2-integration-0.0.1-dev.vsix](https://github.com/phphleb/hleb2-vsc-plugin/raw/refs/heads/main/build/distributions/hleb2-integration-0.0.1-dev.vsix)
 
 2) In VS Code, go to **File>Preferences>Extensions**
 
@@ -19,7 +19,7 @@ Made for Visual Studio Code >=1.96.0
 
 4) Restart the Plugin.
 
-
+![install](https://raw.githubusercontent.com/phphleb/hleb2-vsc-plugin/refs/heads/main/images/extensions-load.jpg)
 
 ### 0.0.1-dev
 
