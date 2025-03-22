@@ -56,6 +56,8 @@ export function registerDebugInfoProvider(context: vscode.ExtensionContext) {
             const entireText = document.getText();
             let match: RegExpExecArray | null;
 
+            console.log(`HLEB2 DEBUG INFO ${this.constructor.name} provideHover`);
+
             while ((match = debugFunctionRegex.exec(entireText)) !== null) {
                 const argText = match[1];
                 const argIndex = match[0].indexOf(argText);

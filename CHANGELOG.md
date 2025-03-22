@@ -1,5 +1,5 @@
 # Change Log
-### 0.0.1
+### 0.0.1-dev
 
 Initial release of HLEB2 plugin.
 + Hint to the route prefix.

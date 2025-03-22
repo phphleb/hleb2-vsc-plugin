@@ -1,8 +1,8 @@
 {
-  "name": "hleb2",
+  "name": "hleb2-integration",
   "displayName": "HLEB2",
   "description": "Extension for PHP framework HLEB2",
-  "version": "0.0.1",
+  "version": "0.0.1-dev",
   "engines": {
     "vscode": ">=1.96.0"
   },

@@ -31,6 +31,8 @@ export function registerRouteAddressProvider(context: vscode.ExtensionContext) {
         provideHover(document, position) {
             const lineText = document.lineAt(position).text; // Получаем текст всей строки
 
+            console.log(`HLEB2 DEBUG INFO ${this.constructor.name} provideHover`);
+
             let match;
             while ((match = routeRegex.exec(lineText)) !== null) {
                 const start = match.index;

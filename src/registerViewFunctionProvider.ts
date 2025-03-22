@@ -9,7 +9,10 @@ const functionNames = [
     "insertTemplate",
     "hl_insert_template",
     "insertCacheTemplate",
-    "hl_insert_cache_template"
+    "hl_insert_cache_template",
+    "Template::insertCache",
+    "Template::insert",
+    "Template::get",
 ];
 
 const regexPattern = functionNames.join("|");
@@ -35,6 +38,8 @@ export function registerViewFunctionProvider(context: vscode.ExtensionContext, r
             const links: vscode.DocumentLink[] = [];
             const text = document.getText();
             let match;
+
+            console.log(`HLEB2 DEBUG INFO ${this.constructor.name} provideHover`);
 
             const relativePath = path.relative(root, document.uri.fsPath);
             if (!relativePath.startsWith('app' + path.sep) &&
