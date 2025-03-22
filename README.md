@@ -11,4 +11,6 @@ To use the plugin, you must install the [HLEB2 framework](https://github.com/php
 Initial release of HLEB2 plugin.
 + Hint to the route prefix.
 + Hint to the route address.
++ List of auto-completions for file paths.
++ Links to files from view(...) and similar functions. Modules are not supported.
 

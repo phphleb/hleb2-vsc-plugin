@@ -32,7 +32,7 @@ export function registerGlobalFilesLinkProvider(context: vscode.ExtensionContext
                 }
             }
 
-            return links.length ? links : undefined;
+            return links.length ? links : [];
         }
     });
 
