@@ -2,9 +2,18 @@
 
 Extension for PHP framework HLEB2
 
+
 ## Requirements
 
 To use the plugin, you must install the [HLEB2 framework](https://github.com/phphleb/hleb).
+
+Made for Visual Studio Code >=1.96.0
+
+## Installation
+
+Test installation from /build/distributions/ folder (download latest .vsix file). In IDE select File>Preferences>Extensions>[...]>Install from VSIX...
+
+
 
 ### 0.0.1
 
