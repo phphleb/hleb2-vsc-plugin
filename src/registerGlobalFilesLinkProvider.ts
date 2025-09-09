@@ -15,8 +15,6 @@ export function registerGlobalFilesLinkProvider(context: vscode.ExtensionContext
             const links: vscode.DocumentLink[] = [];
             const text = document.getText();
 
-            console.log(`HLEB2 DEBUG INFO ${this.constructor.name} provideDocumentLinks`);
-
             let match;
             while ((match = stringArgumentRegex.exec(text)) !== null) {
                 const matchedText = match[2]; // Текст внутри кавычек

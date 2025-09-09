@@ -47,8 +47,6 @@ export function registerGlobalPathProvider(context: vscode.ExtensionContext, roo
             const lineText = document.lineAt(position).text;
             const linePrefix = lineText.substr(0, position.character);
 
-            console.log(`HLEB2 DEBUG INFO ${this.constructor.name} provideCompletionItems`);
-
             const matches = lineText.match(stringArgumentRegex);
             if (matches) {
                 let isInsideString = false;

@@ -39,8 +39,6 @@ export function registerViewFunctionProvider(context: vscode.ExtensionContext, r
             const text = document.getText();
             let match;
 
-            console.log(`HLEB2 DEBUG INFO ${this.constructor.name} provideHover`);
-
             const relativePath = path.relative(root, document.uri.fsPath);
             if (!relativePath.startsWith('app' + path.sep) &&
                 !relativePath.startsWith('routes' + path.sep) &&

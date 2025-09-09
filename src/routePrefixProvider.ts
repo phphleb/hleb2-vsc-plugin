@@ -8,8 +8,6 @@ export function registerRoutePrefixProvider(context: vscode.ExtensionContext) {
             const entireText = document.getText();
             let match;
 
-            console.log(`HLEB2 DEBUG INFO ${this.constructor.name} provideHover`);
-
             while ((match = prefixRegex.exec(entireText)) !== null) {
                 let prefixes = [];
                 let prefixMatch;
