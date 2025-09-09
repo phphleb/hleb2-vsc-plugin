@@ -21,6 +21,10 @@ Made for Visual Studio Code >=1.96.0
 
 ![install](https://raw.githubusercontent.com/phphleb/hleb2-vsc-plugin/refs/heads/main/images/extensions-load.jpg)
 
+### 0.1.0
+
++ Support for modules for autocompletion of the view(...) function.
+
 ### 0.0.1-dev
 
 Initial release of HLEB2 plugin.
