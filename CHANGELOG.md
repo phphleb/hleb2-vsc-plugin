@@ -1,4 +1,8 @@
 # Change Log
+### 0.1.0
+
++ The folder with templates is also searched for in modules.
+
 ### 0.0.1-dev
 
 Initial release of HLEB2 plugin.
